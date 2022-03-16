@@ -22,9 +22,10 @@ router.post("/signup", async (req, res, next) => {
     username,
     password: hash,
   }
+
   //after import user model
   await User.create(user);
-  res.render('profile', {}) //send user data to profile welcome
+  res.redirect("/logIn")
 
 });
 
