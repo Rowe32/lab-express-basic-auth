@@ -15,8 +15,8 @@ router.post("/signup", async (req, res, next) => {
   console.log(req.body);
   const { username, password } = req.body;
 
-  const salt = await bycryptjs.genSalt(12);
-  const hash = await bcryptjs.hash(password, salt);
+  const salt = await bcrypt.genSalt(12);
+  const hash = await bcrypt.hash(password, salt);
 
   const user = {
     username,
