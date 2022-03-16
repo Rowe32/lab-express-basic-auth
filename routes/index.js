@@ -44,8 +44,5 @@ router.post("/login", async (req, res) => {
   }
 });
 
-router.get("/profile", (req, res) => {
-  res.render('profile', {user: req.session.currentUser});
-})
 
 module.exports = router;
