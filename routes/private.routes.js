@@ -3,6 +3,8 @@ const User = require("../models/User.model");
 const bcrypt = require("bcryptjs"); 
 const requireLogin = require("../middleware/routeGuard");
 
+// once I have additional route files, reference routes in app.js !
+
 router.use(requireLogin);
 
 router.get("/profile", (req, res) => {
