@@ -4,6 +4,8 @@ const express = require("express");
 // ℹ️ Responsible for the messages you see in the terminal as requests are coming in
 // https://www.npmjs.com/package/morgan
 const logger = require("morgan");
+const session = require("express-session");
+const MongoStore = require('connect-mongo');
 
 // ℹ️ Needed when we deal with cookies (we will when dealing with authentication)
 // https://www.npmjs.com/package/cookie-parser
@@ -19,6 +21,11 @@ const path = require("path");
 
 // Middleware configuration
 module.exports = (app) => {
+  app.use(session({
+    secret: process.env.SESSION_SECRET,
+    store: MongoStore.create({ mongoUrl: "mongodb://localhost/lab-express-basic-auth" })
+  }));
+
   // In development environment the app logs
   app.use(logger("dev"));
 
